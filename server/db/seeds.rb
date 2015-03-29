@@ -7,13 +7,20 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.delete_all
+[User,Product].each do |klass|
+  klass.delete_all
+end
 
-['ankit','dan'].each do |user|
-  usr = User.create!(email: "#{user}@abc.com",
+['a','d'].each do |user|
+  usr = User.create!(email: "#{user}@a.com",
                      password: 'P@ssw0rd',
-                     uid: "#{user}@abc.com",
+                     uid: "#{user}@a.com",
                      provider: 'email',
                      confirmed_at: Time.now)
   ap "Created: #{user}"
+end
+
+5.times do |i|
+  p =Product.create(name: "Product #{i}")
+  ap "Created product: #{p.name}"
 end

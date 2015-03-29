@@ -8,36 +8,29 @@
  *
  * Main module of the application.
  */
-var app = angular.module('monApp', ['ng-token-auth','ui.router']);
+var app = angular.module('monApp', ['ui.router','ng-token-auth']);
 
-// app.config(function($authProvider) {
-// });
+app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
 
-app.config(function($stateProvider, $urlRouterProvider) {
-  //
-  // For any unmatched url, redirect to /state1
-  $urlRouterProvider.otherwise("/sign_in");
-  //
-  // Now set up the states
+  $authProvider.configure({
+      apiUrl:                  'http://localhost:3000',
+    });
+
+  $urlRouterProvider.otherwise("/login");
   $stateProvider
-    .state('sign_in', {
-      url: "/sign_in",
-      templateUrl: "views/sessions/new.html",
-      constroller: "UserSessionsCtrl"
+    .state('login', {
+      url: '/login',
+      templateUrl: 'views/sessions/new.html',
+      controller: 'IndexCtrl'
     })
-    // .state('home', {
-    //   url: "/",
-    //   templateUrl: "views/home.html",
-    //   controller: "MainCtrl"
-    // })
     .state('products', {
-      url: "/products",
-      templateUrl: "views/products/index.html",
-      controller: "ProductsCtrl",
+      url: '/products',
+      templateUrl: 'views/products/index.html',
       resolve: {
           auth: function($auth) {
             return $auth.validateUser();
           }
-        }
+        },
+      controller: 'ProductsCtrl'
     })
 });

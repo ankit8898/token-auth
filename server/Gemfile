@@ -11,3 +11,5 @@ gem 'devise_token_auth'
 gem 'omniauth'
 gem 'active_model_serializers'
 gem 'awesome_print' #better logging
+
+gem 'rack-cors', :require => 'rack/cors'

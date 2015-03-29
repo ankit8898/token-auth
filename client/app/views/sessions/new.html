@@ -1,5 +1,8 @@
 <div class="row">
    <div class="col-md-6 col-md-offset-3">
+   <div class="alert alert-dismissible alert-danger" ng-show="errors">
+  <strong>{{errors}}</strong>
+</div>
       <form class="form-horizontal" ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
          <fieldset>
             <legend>Login</legend>
