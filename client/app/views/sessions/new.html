@@ -1,0 +1,22 @@
+<div class="row">
+   <div class="col-md-6 col-md-offset-3">
+      <form class="form-horizontal" ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
+         <fieldset>
+            <legend>Login</legend>
+            <div class="form-group">
+               <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+               <div class="col-lg-10">
+                  <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="loginForm.email" required="required">
+               </div>
+            </div>
+            <div class="form-group">
+               <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+               <div class="col-lg-10">
+                  <input type="password" name="password" ng-model="loginForm.password" required="required" class="form-control" placeholder="Password"/>
+               </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+         </fieldset>
+      </form>
+   </div>
+</div>
