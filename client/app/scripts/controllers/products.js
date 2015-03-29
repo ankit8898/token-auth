@@ -7,11 +7,9 @@
  * # MainCtrl
  * Controller of the monApp
  */
-app.controller('ProductsCtrl', function ($scope,$auth,$rootScope) {
+app.controller('ProductsCtrl', function ($scope,$auth,$rootScope,Product) {
 
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    Product.all().then(function(products){
+      $scope.products = products;
+    });
   });

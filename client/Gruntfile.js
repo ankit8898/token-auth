@@ -75,7 +75,7 @@ module.exports = function (grunt) {
       },
       proxies: [
         {
-          context: '/',
+          context: '/api',
           host: 'localhost',
           port: 3000,
           https: false,
@@ -391,7 +391,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'wiredep',
-      //'configureProxies:server',
+      'configureProxies:server',
       'concurrent:server',
       'autoprefixer',
       'connect:livereload',

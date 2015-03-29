@@ -10,11 +10,12 @@
  */
 var app = angular.module('monApp', ['ui.router','ng-token-auth']);
 
-app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
+app.config(function($stateProvider, $urlRouterProvider,$authProvider,RestangularProvider) {
 
   $authProvider.configure({
-      apiUrl:                  'http://localhost:3000',
+      apiUrl: 'http://localhost:3000',
     });
+
 
   $urlRouterProvider.otherwise("/login");
   $stateProvider
@@ -27,8 +28,10 @@ app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
       url: '/products',
       templateUrl: 'views/products/index.html',
       resolve: {
-          auth: function($auth) {
-            return $auth.validateUser();
+          auth: function($auth,$state) {
+            return $auth.validateUser().catch(function(){
+              $state.go('login');
+            });
           }
         },
       controller: 'ProductsCtrl'
