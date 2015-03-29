@@ -7,20 +7,35 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-[User,Product].each do |klass|
+[User,Product,Course].each do |klass|
   klass.delete_all
 end
 
-['a','d'].each do |user|
-  usr = User.create!(email: "#{user}@a.com",
-                     password: 'P@ssw0rd',
-                     uid: "#{user}@a.com",
-                     provider: 'email',
-                     confirmed_at: Time.now)
-  ap "Created: #{user}"
+['a','b'].each do |user|
+  usr = Student.create!(email: "#{user}@a.com",
+                        password: 'P@ssw0rd',
+                        uid: "#{user}@a.com",
+                        provider: 'email',
+                        confirmed_at: Time.now)
+  ap "Created Student: #{user}"
+end
+
+
+['c','d'].each do |user|
+  usr = Professor.create!(email: "#{user}@a.com",
+                          password: 'P@ssw0rd',
+                          uid: "#{user}@a.com",
+                          provider: 'email',
+                          confirmed_at: Time.now)
+  ap "Created Professor: #{user}"
 end
 
 5.times do |i|
-  p =Product.create(name: "Product #{i}")
+  p = Product.create(name: "Product #{i}")
   ap "Created product: #{p.name}"
+end
+
+5.times do |i|
+  p = Course.create(name: "Course #{i}")
+  ap "Created Course: #{p.name}"
 end

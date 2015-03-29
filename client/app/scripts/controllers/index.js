@@ -15,8 +15,22 @@
   });
 
 
+  $scope.handleLoginBtnClick = function() {
+      $auth.submitLogin($scope.loginForm)
+        .then(function(resp) {
+          console.log(resp);
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
+//   $auth.submitLogin($scope.loginForm, {
+//   config: 'default'
+// });
+
+
   $rootScope.$on('auth:login-error', function(ev, reason) {
-    console.log('auth failed because', reason.errors[0]);
     $scope.errors = reason.errors[0];
   });
 

@@ -10,12 +10,33 @@
  */
 var app = angular.module('monApp', ['ui.router','ng-token-auth']);
 
-app.config(function($stateProvider, $urlRouterProvider,$authProvider,RestangularProvider) {
+app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
 
-  $authProvider.configure({
-      apiUrl: 'http://localhost:3000',
-    });
+  // $authProvider.configure({
+  //     apiUrl: 'http://localhost:3000',
+  //   });
 
+$authProvider.configure([
+  {
+    default: {
+      apiUrl:  'http://localhost:3000',
+      proxyIf: function() { window.isOldIE() }
+    }
+  }, {
+    prof: {
+      apiUrl:  'http://localhost:3000',
+      proxyIf:               function() { window.isOldIE() },
+      signOutUrl:            '/prof_auth/sign_out',
+      emailSignInPath:       '/prof_auth/sign_in',
+      emailRegistrationPath: '/prof_auth',
+      accountUpdatePath:     '/prof_auth',
+      accountDeletePath:     '/prof_auth',
+      passwordResetPath:     '/prof_auth/password',
+      passwordUpdatePath:    '/prof_auth/password',
+      tokenValidationPath:   '/prof_auth/validate_token'
+    }
+  }
+]);
 
   $urlRouterProvider.otherwise("/login");
   $stateProvider
