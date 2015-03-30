@@ -12,4 +12,10 @@ app.controller('ProductsCtrl', function ($scope,$auth,$rootScope,Product) {
     Product.all().then(function(products){
       $scope.products = products;
     });
+
+    var checkAccess = function(){
+      console.log($auth);
+    }
+
+    checkAccess();
   });

@@ -12,10 +12,6 @@ var app = angular.module('monApp', ['ui.router','ng-token-auth']);
 
 app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
 
-  // $authProvider.configure({
-  //     apiUrl: 'http://localhost:3000',
-  //   });
-
 $authProvider.configure([
   {
     default: {
@@ -50,11 +46,37 @@ $authProvider.configure([
       templateUrl: 'views/products/index.html',
       resolve: {
           auth: function($auth,$state) {
-            return $auth.validateUser().catch(function(){
+            return $auth.validateUser().then(function(resp) {
+              if(resp.configName  == 'prof'){
+                $state.go('not_authorized');
+              }
+            })
+            .catch(function(){
               $state.go('login');
             });
           }
         },
       controller: 'ProductsCtrl'
+    })
+    .state('courses', {
+      url: '/courses',
+      templateUrl: 'views/courses/index.html',
+      resolve: {
+          auth: function($auth,$state) {
+            return $auth.validateUser().then(function(resp) {
+              if(resp.configName  == 'default'){
+                $state.go('not_authorized');
+              }
+            })
+            .catch(function(){
+              $state.go('login');
+            });
+          }
+        },
+      controller: 'CoursesCtrl'
+    })
+    .state('not_authorized', {
+      url: '/not_authorized',
+      templateUrl: 'views/not_authorized.html'
     })
 });
