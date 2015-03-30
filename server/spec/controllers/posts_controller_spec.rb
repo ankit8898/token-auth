@@ -31,18 +31,36 @@ RSpec.describe PostsController, type: :controller do
                                     'body' => post_one.body,
                                     'likes_count' => 0,
                                     'comments' => [],
-                                    'likes' => []
+                                    'comments_count' => 0,
+                                    'likes' => [],
+                                    'author' => {
+                                      'id' => post_one.author.id,
+                                      'email' => post_one.author.email,
+                                      'name' => post_one.author.name,
+                                    }
                                   },
                                   {
                                     'id' => post_two.id,
                                     'title' => post_two.title,
                                     'body' => post_two.body,
                                     'likes_count' => 1,
+                                    'comments_count' => 1,
+                                    'author' => {
+                                      'id' => post_two.author.id,
+                                      'email' => post_two.author.email,
+                                      'name' => post_two.author.name,
+                                    },
                                     'comments' => [
                                       {
                                         'id' => comment_three.id,
                                         'body' => comment_three.body,
-                                        'post_id' => post_two.id
+                                        'post_id' => post_two.id,
+                                        'author' => {
+                                          'id' => comment_three.author.id,
+                                          'email' => comment_three.author.email,
+                                          'name' => comment_three.author.name
+
+                                        }
                                       }
                                     ],
                                     'likes' => [
@@ -82,6 +100,12 @@ RSpec.describe PostsController, type: :controller do
             'body' => "Bar",
             'likes' => [],
             'comments' => [],
+            'comments_count' => 0,
+            'author' => {
+              'id' => post.author.id,
+              'email' => post.author.email,
+              'name' => post.author.name,
+            },
             'likes_count' => 0
           }
         )

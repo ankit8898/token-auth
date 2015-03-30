@@ -6,7 +6,13 @@ RSpec.describe CommentsController, type: :controller do
   context "Author Login" do
     login_author
 
+    let(:author) {FactoryGirl.create(:author)}
+
     describe "POST create" do
+
+      before do
+        allow(controller).to receive(:current_author).and_return(author)
+      end
 
       it "should create comment" do
         post :create,{comment: {body: 'This is a comment..yo!',post_id: 2}}

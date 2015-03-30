@@ -11,13 +11,17 @@
 #
 
 class PostSerializer < ActiveModel::Serializer
-  attributes :id,:title,:body,:likes_count
+  attributes :id,:title,:body,:likes_count,:comments_count
 
   has_many  :comments
-
   has_many  :likes
+  has_one  :author
 
   def likes_count
     object.likes.count
+  end
+
+  def comments_count
+    object.comments.count
   end
 end

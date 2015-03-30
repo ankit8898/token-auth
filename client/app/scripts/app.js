@@ -59,7 +59,7 @@ $authProvider.configure([
       resolve: {
           auth: function($auth,$state) {
             return $auth.validateUser().then(function(resp) {
-              if(resp.configName  == 'prof'){
+              if(resp.configName  == 'default'){
                 $state.go('not_authorized');
               }
             })
@@ -102,7 +102,24 @@ $authProvider.configure([
             });
           }
         },
-      controller: 'PostsCtrl'
+      controller: 'PostsIndexCtrl'
+    })
+     .state('post', {
+      url: '/posts/:id',
+      templateUrl: 'views/posts/show.html',
+      resolve: {
+          auth: function($auth,$state) {
+            return $auth.validateUser().then(function(resp) {
+              if(resp.configName  == 'prof'){
+                $state.go('not_authorized');
+              }
+            })
+            .catch(function(){
+              $state.go('login');
+            });
+          }
+        },
+      controller: 'PostsShowCtrl'
     })
     .state('not_authorized', {
       url: '/not_authorized',

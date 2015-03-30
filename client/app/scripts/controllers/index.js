@@ -27,7 +27,7 @@
     console.log("Successful login!")
     if (user.configName == 'default') {
       console.log("Routing to Student access..")
-      $state.go('products');
+      $state.go('posts');
     } else if (user.configName == 'prof'){
       console.log("Routing to Professor access..")
       $state.go('courses');

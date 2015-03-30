@@ -13,4 +13,10 @@ app.service('Post', function Post($http,$auth) {
     this.all = function(){
       return $http.get($auth.apiUrl() + '/posts')
     }
+
+    this.get = function(id){
+      return $http.get($auth.apiUrl() + '/posts/' + id)
+    }
+
+
   });

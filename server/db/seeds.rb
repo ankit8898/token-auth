@@ -13,11 +13,11 @@ end
 
 
 ap "*** Creating Authors ***"
-['Ankit','Dan'].each do |author|
-  usr = Author.create!(email: "#{author}@a.com",
+[{id: 'ankit',name: 'Ankit Gupta'},{id: 'dan',name: 'Dan Widing'}].each do |hsh|
+  usr = Author.create!(email: "#{hsh[:id]}@a.com",
                        password: 'P@ssw0rd',
-                       uid: "#{author}@a.com",
-                       name: Faker::Name.name,
+                       uid: "#{hsh[:id]}@a.com",
+                       name: hsh[:name],
                        provider: 'email',
                        confirmed_at: Time.now)
   ap "Created Student: #{usr.name}"
@@ -26,11 +26,11 @@ end
 
 ap "*** Creating Post ***"
 
-3.times do |i|
+10.times do |i|
   author = Author.first
   post = Post.create!(title: Faker::Company.catch_phrase,body: Faker::Lorem.paragraph)
   post.author = author
-  post.comments << [Comment.new(body: "Comment 1"),Comment.new(body: "Comment 2") ]
+  post.comments << [Comment.new(body: Faker::Lorem.sentence,author_id: author.id),Comment.new(body: Faker::Lorem.sentence,author_id: Author.last.id) ]
   post.likes << [Like.new(author_id: author.id),Like.new(author_id: Author.last.id)]
   post.save!
   ap "Created post: #{post.body} with #{post.comments.count} comments and #{post.likes.count} likes"
