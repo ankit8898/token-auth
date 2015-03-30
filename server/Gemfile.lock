@@ -42,6 +42,7 @@ GEM
     awesome_print (1.6.1)
     bcrypt (3.1.10)
     builder (3.2.2)
+    database_cleaner (1.4.1)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -59,6 +60,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hashie (3.4.0)
@@ -117,6 +120,8 @@ GEM
     rake (10.4.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec-collection_matchers (1.1.2)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.4)
@@ -133,6 +138,8 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -156,12 +163,16 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   awesome_print
+  database_cleaner
   devise_token_auth
   factory_girl_rails
+  faker
   mysql2
   omniauth
   pg
   rack-cors
   rails (= 4.2.0)
   rails_12factor
-  rspec-rails (~> 3.0)
+  rspec-collection_matchers
+  rspec-rails (~> 3.0.0)
+  shoulda-matchers

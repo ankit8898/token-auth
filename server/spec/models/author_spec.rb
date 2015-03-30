@@ -28,27 +28,8 @@
 #  updated_at             :datetime
 #
 
-FactoryGirl.define do
-  factory :user do
-    #uid {"a@a.com"}
-    uid {Faker::Internet.email}
-    email {uid}
-    provider {"email"}
-    password {"P@ssw0rd"}
-    password_confirmation {"P@ssw0rd"}
-    confirmed_at {Time.now}
-  end
+require 'rails_helper'
 
-  factory :student, parent: :user do
-    type "Student"
-  end
-
-  factory :professor, parent: :user do
-    type "Professor"
-  end
-
-  factory :author, parent: :user do
-    type "Author"
-  end
-
+RSpec.describe Author, :type => :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

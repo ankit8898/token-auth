@@ -22,5 +22,15 @@ gem 'awesome_print' #better logging
 
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'rspec-rails', '~> 3.0'
-gem 'factory_girl_rails'
+
+group :development,:test do
+  gem 'factory_girl_rails'
+  gem 'faker'
+end
+
+group :test do
+  gem 'database_cleaner'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'shoulda-matchers', require: false
+  gem 'rspec-collection_matchers'
+end

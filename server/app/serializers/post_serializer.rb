@@ -8,10 +8,12 @@
 #  updated_at :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+class PostSerializer < ActiveModel::Serializer
+  attributes :id,:title,:body,:likes_count
 
-one:
-  name: MyString
+  has_many  :comments
 
-two:
-  name: MyString
+  def likes_count
+    object.likes.count
+  end
+end
