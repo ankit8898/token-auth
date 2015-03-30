@@ -15,12 +15,24 @@ app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
 $authProvider.configure([
   {
     default: {
-      apiUrl:  'https://univ-mon.herokuapp.com',
+      /**
+      This API url is the heroku end point,
+      this should be bundled during grunt build.
+      Uncomment it to do a fresh build manually.
+      **/
+      apiUrl:  'http://localhost:3000',
+      //apiUrl:  'https://univ-mon.herokuapp.com',
       proxyIf: function() { window.isOldIE() }
     }
   }, {
     prof: {
-      apiUrl:  'https://univ-mon.herokuapp.com',
+      /**
+      This API url is the heroku end point,
+      this should be bundled during grunt build.
+      Uncomment it to do a fresh build manually.
+      **/
+      //apiUrl:  'https://univ-mon.herokuapp.com',
+      apiUrl:  'http://localhost:3000',
       proxyIf:               function() { window.isOldIE() },
       signOutUrl:            '/prof_auth/sign_out',
       emailSignInPath:       '/prof_auth/sign_in',
