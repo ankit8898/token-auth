@@ -12,13 +12,9 @@
 
 FactoryGirl.define do
   factory :post do
-    title {Faker::Name.title}
-    body {Faker::Lorem.sentence}
-    #author {FactoryGirl.create(:author)}
-    author do
-      uid = Faker::Internet.email
-      Author.create!()
-    end
+    title  {Faker::Name.title}
+    body   {Faker::Lorem.sentence}
+    author {FactoryGirl.create(:author)}
   end
 
 end

@@ -11,7 +11,7 @@
 
 FactoryGirl.define do
   factory :like do
-    
+    author {FactoryGirl.create(:author)}
   end
 
 end

@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
   belongs_to :author
   has_many :comments
   has_many :likes, as: :likeable
-  validates :body, presence: true
+  validates :title, presence: true
+  validates :body,  presence: true
 
 end

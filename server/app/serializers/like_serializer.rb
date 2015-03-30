@@ -9,8 +9,8 @@
 #  updated_at    :datetime         not null
 #
 
-require 'rails_helper'
+class LikeSerializer < ActiveModel::Serializer
+  attributes :id
 
-RSpec.describe Like, :type => :model do
-  it { should belong_to(:author) }
+  has_one :author
 end

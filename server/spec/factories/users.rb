@@ -30,25 +30,25 @@
 
 FactoryGirl.define do
   factory :user do
-    #uid {"a@a.com"}
     uid {Faker::Internet.email}
     email {uid}
+    name {Faker::Name.name}
     provider {"email"}
     password {"P@ssw0rd"}
     password_confirmation {"P@ssw0rd"}
     confirmed_at {Time.now}
   end
 
-  factory :student, parent: :user do
-    type "Student"
+  factory :student, parent: :user, class: 'Student' do
+
   end
 
-  factory :professor, parent: :user do
-    type "Professor"
+  factory :professor, parent: :user, class: 'Professor' do
+
   end
 
-  factory :author, parent: :user do
-    type "Author"
+  factory :author, parent: :user, class: 'Author' do
+
   end
 
 end

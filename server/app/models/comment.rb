@@ -13,4 +13,6 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :author
   has_many :likes, as: :likeable
+
+  validates :body, presence: true
 end

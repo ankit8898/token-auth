@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_student!
+  before_action :authenticate_author!
 
   def index
     @products = Product.all

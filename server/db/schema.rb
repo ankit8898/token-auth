@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150330122145) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
+    t.integer  "author_id",  limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.text     "body",       limit: 65535
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20150330122145) do
   create_table "likes", force: :cascade do |t|
     t.integer  "likeable_id",   limit: 4
     t.string   "likeable_type", limit: 255
+    t.integer  "author_id",     limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
