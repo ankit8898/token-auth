@@ -17,47 +17,55 @@ ap "*** Creating Authors ***"
   usr = Author.create!(email: "#{author}@a.com",
                        password: 'P@ssw0rd',
                        uid: "#{author}@a.com",
+                       name: Faker::Name.name,
                        provider: 'email',
                        confirmed_at: Time.now)
-  ap "Created Student: #{usr.email}"
+  ap "Created Student: #{usr.name}"
 end
 
 
 ap "*** Creating Post ***"
 
 3.times do |i|
-  post = Post.create!(title: "A #{i}",body: "This is a post #{i}")
-  post.author = Author.take
+  author = Author.first
+  post = Post.create!(title: Faker::Company.catch_phrase,body: Faker::Lorem.paragraph)
+  post.author = author
   post.comments << [Comment.new(body: "Comment 1"),Comment.new(body: "Comment 2") ]
-  post.likes << [Like.new,Like.new]
+  post.likes << [Like.new(author_id: author.id),Like.new(author_id: Author.last.id)]
   post.save!
   ap "Created post: #{post.body} with #{post.comments.count} comments and #{post.likes.count} likes"
 end
 
+ap "*** Creating Student ***"
 ['a','b'].each do |user|
   usr = Student.create!(email: "#{user}@a.com",
                         password: 'P@ssw0rd',
                         uid: "#{user}@a.com",
+                        name: Faker::Name.name,
                         provider: 'email',
                         confirmed_at: Time.now)
-  ap "Created Student: #{user}"
+  ap "Created Student: #{usr.name}"
 end
 
-
+ap "*** Creating Professor ***"
 ['c','d'].each do |user|
   usr = Professor.create!(email: "#{user}@a.com",
                           password: 'P@ssw0rd',
                           uid: "#{user}@a.com",
+                          name: Faker::Name.name,
                           provider: 'email',
                           confirmed_at: Time.now)
-  ap "Created Professor: #{user}"
+  ap "Created Professor: #{usr.name}"
 end
 
+
+ap "*** Creating Products ***"
 5.times do |i|
   p = Product.create(name: "Product #{i}")
   ap "Created product: #{p.name}"
 end
 
+ap "*** Creating Courses ***"
 5.times do |i|
   p = Course.create(name: "Course #{i}")
   ap "Created Course: #{p.name}"
