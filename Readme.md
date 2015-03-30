@@ -1,5 +1,6 @@
 Yet another web app
 
+![Alt text](https://raw.githubusercontent.com/ankit8898/token-auth/master/images/dashboard.png)
 ## Tech Stack
 
 - AngularJS
