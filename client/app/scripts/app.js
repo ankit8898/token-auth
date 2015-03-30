@@ -15,12 +15,12 @@ app.config(function($stateProvider, $urlRouterProvider,$authProvider) {
 $authProvider.configure([
   {
     default: {
-      apiUrl:  'http://localhost:3000',
+      apiUrl:  'https://univ-mon.herokuapp.com',
       proxyIf: function() { window.isOldIE() }
     }
   }, {
     prof: {
-      apiUrl:  'http://localhost:3000',
+      apiUrl:  'https://univ-mon.herokuapp.com',
       proxyIf:               function() { window.isOldIE() },
       signOutUrl:            '/prof_auth/sign_out',
       emailSignInPath:       '/prof_auth/sign_in',
