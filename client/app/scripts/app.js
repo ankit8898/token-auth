@@ -87,6 +87,23 @@ $authProvider.configure([
         },
       controller: 'CoursesCtrl'
     })
+     .state('posts', {
+      url: '/posts',
+      templateUrl: 'views/posts/index.html',
+      resolve: {
+          auth: function($auth,$state) {
+            return $auth.validateUser().then(function(resp) {
+              if(resp.configName  == 'prof'){
+                $state.go('not_authorized');
+              }
+            })
+            .catch(function(){
+              $state.go('login');
+            });
+          }
+        },
+      controller: 'PostsCtrl'
+    })
     .state('not_authorized', {
       url: '/not_authorized',
       templateUrl: 'views/not_authorized.html'
