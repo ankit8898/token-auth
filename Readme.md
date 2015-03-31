@@ -1,5 +1,6 @@
 ## Blog
-Dan - Ankit coding session 
+
+Implementation with a token based auth
 
 <h5>Access directly on heroku instance</h5>
 
