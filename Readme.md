@@ -1,6 +1,20 @@
-Yet another web app
+## Blog
+Dan - Ankit coding session 
 
-![Alt text](https://raw.githubusercontent.com/ankit8898/token-auth/master/images/dashboard.png)
+<h5>Access directly on heroku instance</h5>
+
+<b>url:</b> http://univ-mon.herokuapp.com/#/login <br/>
+<b>username/password:</b> ankit@a.com/P@ssword OR dan@a.com/P@ssw0rd
+
+<i>Screen 1</i>
+![Alt text](https://raw.githubusercontent.com/PracticallyGreen/gupta-interview2/master/images/login.png?token=AAZwl0-T1kbLyT62tsSxQsU-E-Eog84Wks5VIz92wA%3D%3D)
+
+<i>Screen 2</i>
+![Alt text](https://raw.githubusercontent.com/PracticallyGreen/gupta-interview2/master/images/listing.png?token=AAZwlyE4-c-DNwtXOADKrh7uvkPFMVZbks5VIz-iwA%3D%3D)
+
+<i>Screen 3</i>
+![Alt text](https://raw.githubusercontent.com/PracticallyGreen/gupta-interview2/master/images/post.png?token=AAZwl-Fnf5GTODXJwpU5F2yeApmIIsXaks5VIz--wA%3D%3D)
+
 ## Tech Stack
 
 - AngularJS
@@ -18,8 +32,6 @@ Application comes in two parts
 
 
 ## Installation
-
-
 
 You have to install both the apps manually .
 
@@ -41,5 +53,18 @@ Application root has a [Procfile](https://github.com/ankit8898/kt.it/blob/master
 $ foreman start
 $ 11:13:17 client.1 | started with pid 4560
 $ 11:13:17 server.1 | started with pid 4561
+
+```
+
+## Testing
+
+We use rspec for testing :heart:
+
+```
+$ bundle exec rspec 
+.............
+
+Finished in 1.41 seconds (files took 2.5 seconds to load)
+26 examples, 0 failures
 
 ```
