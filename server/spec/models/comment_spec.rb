@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  post_id    :integer
+#  author_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  body       :text(65535)

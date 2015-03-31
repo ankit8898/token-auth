@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
   before_action :authenticate_author!
 
   def create
-    ap comment_params
     @comment = Comment.new(comment_params)
     if @comment.save
       render json: @comment
