@@ -10,7 +10,7 @@
 #
 
 class LikeSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id,:likeable_type
 
   has_one :author
 end

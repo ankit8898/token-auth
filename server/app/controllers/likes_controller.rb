@@ -13,6 +13,6 @@ class LikesController < ApplicationController
 
 
   def like_params
-    params.require(:like).permit(:likeable_id,:likeable_type)
+    params.require(:like).permit(:likeable_id,:likeable_type).merge(author_id: current_author.id)
   end
 end

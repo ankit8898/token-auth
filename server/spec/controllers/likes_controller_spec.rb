@@ -2,9 +2,15 @@ require 'rails_helper'
 
 RSpec.describe LikesController, type: :controller do
 
+  let(:author) {FactoryGirl.create(:author)}
+
   context "Author Login" do
 
     login_author
+
+    before do
+      allow(controller).to receive(:current_author).and_return(author)
+    end
 
     describe "POST create" do
 

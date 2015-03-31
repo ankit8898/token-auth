@@ -2,9 +2,14 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
 
+  let(:author) {FactoryGirl.create(:author)}
 
   context "Author Login" do
     login_author
+
+    before do
+      allow(controller).to receive(:current_author).and_return(author)
+    end
 
     let!(:comment_one)   {FactoryGirl.create(:comment)}
     let!(:comment_two)   {FactoryGirl.create(:comment)}
@@ -43,8 +48,8 @@ RSpec.describe PostsController, type: :controller do
                                     'id' => post_two.id,
                                     'title' => post_two.title,
                                     'body' => post_two.body,
-                                    'likes_count' => 1,
                                     'comments_count' => 1,
+                                    'likes_count' => 1,
                                     'author' => {
                                       'id' => post_two.author.id,
                                       'email' => post_two.author.email,
@@ -55,17 +60,18 @@ RSpec.describe PostsController, type: :controller do
                                         'id' => comment_three.id,
                                         'body' => comment_three.body,
                                         'post_id' => post_two.id,
+                                        'likes_count' => 0,
                                         'author' => {
                                           'id' => comment_three.author.id,
                                           'email' => comment_three.author.email,
                                           'name' => comment_three.author.name
-
                                         }
                                       }
                                     ],
                                     'likes' => [
                                       {
                                         'id' => like_three.id,
+                                        'likeable_type' => "Post",
                                         'author' => {
                                           'id' => like_three.author.id,
                                           'email' => like_three.author.email,

@@ -24,6 +24,6 @@ class PostsController < ApplicationController
 
 
   def post_params
-    params.require(:post).permit(:title,:body)
+    params.require(:post).permit(:title,:body).merge(author_id: current_author.id)
   end
 end

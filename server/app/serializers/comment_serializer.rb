@@ -10,7 +10,10 @@
 #
 
 class CommentSerializer < ActiveModel::Serializer
-  attributes :id,:body,:post_id
+  attributes :id,:body,:post_id,:likes_count
 
+  def likes_count
+    object.likes.count
+  end
   has_one :author
 end

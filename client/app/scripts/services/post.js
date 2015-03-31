@@ -18,5 +18,8 @@ app.service('Post', function Post($http,$auth) {
       return $http.get($auth.apiUrl() + '/posts/' + id)
     }
 
+    this.create = function(p){
+      return $http.post($auth.apiUrl() + '/posts', {post: {body: p.body, title: p.title}});
+    }
 
   });
